@@ -20,21 +20,22 @@ def swag(sc, counter, passive_aggressive):
 		if start_time < created_at and not deal.id in deal_ids:
 			deal_ids.append(deal.id)
 			new_deals.append(deal)
+			passive_aggressive = 0
 			print "%s" % pirate_speak.translate(deal.name)
 	if counter > 5:
 		if passive_aggressive == 0:
 			msg = "Getting bored here..."
 			passive_aggressive += 1
 			counter = 0
-		elif passive_aggressive == 2:
+		elif passive_aggressive == 1:
 			msg = "Nothing is happening!"
 			passive_aggressive += 1
 			counter = 0
-		elif passive_aggressive == 3:
+		elif passive_aggressive == 2:
 			msg = "Why am I still doing this?"
 			passive_aggressive += 1
 			counter = 0
-		elif passive_aggressive == 4:
+		elif passive_aggressive == 3:
 			msg = "What is my purpose? What is life?"
 			passive_aggressive = 0
 			counter = 0 
