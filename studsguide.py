@@ -1,5 +1,5 @@
 from pyrise import *
-import sched, time
+import sched, time, pirate_speak
 Highrise.set_server('froxy')
 Highrise.auth('f4075d9e048c00bda63ec55794d02831')
 
@@ -17,7 +17,7 @@ def swag(sc, counter, passive_aggressive):
 		if not deal.id in deal_ids:
 			deal_ids.append(deal.id)
 			new_deals.append(deal)
-			print "%s" % deal.name
+			print "%s" % pirate_speak.translate(deal.name)
 	if counter > 5:
 		if passive_aggressive == 0:
 			msg = "Getting bored here..."
