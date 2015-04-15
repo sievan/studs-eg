@@ -8,7 +8,7 @@ new_deals = []
 s = sched.scheduler(time.time, time.sleep)
 counter = 0
 passive_aggressive = 0
-def swag(sc):
+def swag(sc, counter, passive_aggressive):
 	msg = "Polling..."
 	counter += 1
 	deals = Deal.all()
@@ -21,15 +21,15 @@ def swag(sc):
 	if counter > 5:
 		if passive_aggressive == 0:
 			msg = "Getting bored here..."
-			passive_aggressive = 1
+			passive_aggressive += 1
 			counter = 0
 		elif passive_aggressive == 2:
 			msg = "Nothing is happening!"
-			passive_aggressive = 2
+			passive_aggressive += 1
 			counter = 0
 		elif passive_aggressive == 3:
 			msg = "Why am I still doing this?"
-			passive_aggressive = 3
+			passive_aggressive += 1
 			counter = 0
 		elif passive_aggressive == 4:
 			msg = "What is my purpose? What is life?"
@@ -37,8 +37,8 @@ def swag(sc):
 			counter = 0 
 	print msg
 
-	sc.enter(5, 1, swag, (sc,))
+	sc.enter(1, 1, swag, (sc, counter, passive_aggressive))
 
-s.enter(5, 1, swag, (s,))
+s.enter(1, 1, swag, (s, counter, passive_aggressive))
 s.run()
 
