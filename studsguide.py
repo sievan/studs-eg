@@ -1,5 +1,5 @@
 from pyrise import *
-from datetime import datetime
+from datetime import datetime, timedelta
 import sched, time, pirate_speak
 Highrise.set_server('froxy')
 Highrise.auth('f4075d9e048c00bda63ec55794d02831')
@@ -16,7 +16,8 @@ def swag(sc, counter, passive_aggressive):
 	deals = Deal.all()
 	new_deals = []
 	for deal in deals:
-		if start_time < deal.created_at and not deal.id in deal_ids:
+		created_at = deal.created_at + timedelta(hours = 2)
+		if start_time < created_at and not deal.id in deal_ids:
 			deal_ids.append(deal.id)
 			new_deals.append(deal)
 			print "%s" % pirate_speak.translate(deal.name)
