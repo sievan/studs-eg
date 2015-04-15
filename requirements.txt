@@ -1,0 +1,4 @@
+Highton==1.2.3
+httplib2==0.9.1
+pyrise==0.5.3
+requests==2.6.0
